@@ -1,0 +1,4 @@
+falsk
+pymysql
+requests
+gevent

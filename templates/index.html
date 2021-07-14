@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+	
+		<title>天气服务</title>
+		<link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../static/css/swiper.min.css" />
+		<link rel="stylesheet" href="../static/css/app.css" />
+
+		<script type="text/javascript" src="../static/js/jquery-3.6.0.min.js"></script>
+		<script type="text/javascript" src="../static/js/echarts.min.js"></script>
+		<script type="text/javascript" src="../static/js/macarons.js"></script>
+		<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../static/js/swiper.min.js"></script>
+		<script type="text/javascript" src="../static/js/echarts-liquidfill.min.js"></script>
+	</head>
+		
+	
+	<body class="bg">
+		<header class="header">
+			<h3>天气服务可视化平台</h3>
+		</header>
+		
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row fill-h">
+					<div class="xpanel-wrapper-1  fill-h">
+						<div class="xpanel-wrapper xpanel-wrapper-1-1" style="width: 100%;height: 33.33%;">
+							<div class="sub-header">
+								<span>室内温度变化</span>
+								<img src="../static/img/sub-header.png">
+							</div>
+							<div class="xpanel">
+								<div class="fill-h indoor-sequence" id="indoor-temperature-sequence"></div>
+							</div>
+						</div>
+						<div class="xpanel-wrapper xpanel-wrapper-1-1" style="width: 100%;height: 33.33%;">
+							<div class="sub-header">
+								<span>室内湿度变化</span>
+								<img src="../static/img/sub-header.png">
+							</div>
+							<div class="xpanel">
+								<div class="fill-h indoor-sequence" id="indoor-humidity-sequence"></div>
+							</div>
+						</div>
+						<div class="xpanel-wrapper xpanel-wrapper-1-1" style="width: 100%;height: 33.33%;">
+							<div class="sub-header">
+								<span>室内气压变化</span>
+								<img src="../static/img/sub-header.png">
+							</div>
+							<div class="xpanel">
+								<div class="fill-h indoor-sequence" id="indoor-pressure-sequence"></div>
+							</div>
+						</div>
+					</div>
+					<div class="xpanel-wrapper-2 fill-h">
+						<div class="xpanel-wrapper weather-board" style="width: 100%;height: 20%;">
+							<div class="time">
+								<h3 id="realtime">11:22:33</h3>
+							</div>
+							<img src="../static/img/line.png" style="float:left;height:80%;width: 1.5px;">
+							<div class="weather">
+								<img id="weather_img" src="../static//img/weather_img/yin.png">
+								<h3 id="tem1">36°C</h3>
+								<h4 id="tem2">39°C / 26°C</h4>
+							</div>
+							<div class="date">
+								<h3 id="date">7月10日 星期六 西安</h3>
+							</div>
+						</div>
+						<div class="xpanel-wrapper xpanel-wrapper-2-2" style="width: 100%;height: 80%;background:url(../static/img/grid.png) no-repeat;background-size:100% 100%;position:relative;">
+							
+							<div class="xpanel-wrapper indoor-condition">
+								<div class="items">
+									<p>室内温度</p>
+									<h3 id="tem">29°C</h3>
+									<div class="fill-h" id="indoor-temperature-chart"></div>
+								</div>
+								<div class="items">
+									<p>室内湿度</p>
+									<h3 id="hum">60%</h3>
+									<div class="fill-h" id="indoor-humidity-ball"></div>
+								</div>
+								<div class="items">
+									<p>室内气压</p>
+									<h3 id="pres">957.28hPa</h3>
+									<div class="fill-h" id="indoor-pressure-chart"></div>
+								</div>
+							</div>
+							<div class="life-index-box">
+								<div class="sub-header">
+									<span>生活指数</span>
+								</div>
+								<div class="xpanel">
+									<div class="fill-h" id="lifeChart" style="width: 100%;height: 100%;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="xpanel-wrapper-3 fill-h">
+						<div class="xpanel-wrapper forcast-box" style="width: 100%;height: 60%;">
+							<div class="sub-header">
+								<span>24小时天气预报</span>
+								<img src="../static/img/sub-header.png">
+							</div>
+							<a style="color:deepskyblue;">时间</a>
+							<a style="color:deepskyblue;">天气</a>
+							<a style="color:deepskyblue;">温度</a>
+							<a style="color:deepskyblue;">风向</a>
+							<a style="color:deepskyblue;">空气</a>
+							<div class="forcast-chart" id="swiper1">	
+								<div class="swiper-wrapper">
+									<div class="swiper-slide" id="forcastChart1"></div>
+									<div class="swiper-slide" id="forcastChart2"></div>
+									<div class="swiper-slide" id="forcastChart3"></div>
+								</div>					
+							</div>
+						</div>
+						<div class="xpanel-wrapper xpanel-wrapper-3-2" style="width: 100%;height: 40%;">
+							<div class="sub-header">
+								<span>室外空气质量</span>
+								<img src="../static/img/sub-header.png">
+							</div>
+							<div class="xpanel">
+								<div class="fill-h" id="airChart" style="width: 100%;height: 100%;"></div>
+							</div>
+						</div>
+					</div>
+					<script type="text/javascript">
+						if ($(window).width() < 820) {
+							$( ".xpanel-wrapper-1" ).insertAfter( $( ".xpanel-wrapper-2" ) );
+						}
+						else {
+							$( ".xpanel-wrapper-1" ).insertBefore( $( ".xpanel-wrapper-2" ) );
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<script type="text/javascript" src="../static/js/myscripts/indoor-charts.js"></script>
+		<script type="text/javascript" src="../static/js/myscripts/indoor-sequence.js"></script>
+		<script type="text/javascript" src="../static/js/myscripts/forcast.js"></script>
+		<script type="text/javascript" src="../static/js/myscripts/life-index.js"></script>
+		<script type="text/javascript" src="../static/js/myscripts/air.js"></script>
+
+
+		<script type="text/javascript" src="../static/js/myscripts/controller.js"></script>
+
+		<script type="text/javascript">
+			$(function() {	
+				
+				/********** 窗口大小改变时，重置报表大小 ********************/
+				window.onresize = function() {
+					indoor_temperature_chart.resize();
+					indoor_humidity_ball.resize();
+					indoor_pressure_chart.resize();
+					indoor_temperature_sequence.resize();
+					indoor_humidity_sequence.resize();
+					indoor_pressure_sequence.resize();
+					lifeChart.resize();
+					forcastCharts[0].resize();
+					forcastCharts[1].resize();
+					forcastCharts[2].resize();
+					airChart.resize();
+				};
+			});
+			var mySwiper1 = new Swiper('#swiper1', {
+				autoplay: true,//可选选项，自动滑动
+				direction : 'vertical',//可选选项，滑动方向
+				speed:2000,//可选选项，滑动速度
+			});
+		</script>
+
+	</body>
+</html>
