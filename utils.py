@@ -80,7 +80,7 @@ class IndoorData:
             data["hum"].append(float(result[i][2]))
             data["pres"].append(float(result[i][3]))
             
-        data["now"] = [float(result[0][1]),float(result[0][2]),float(result[0][2])]
+        data["now"] = [float(result[0][1]),float(result[0][2]),float(result[0][3])]
         return data
 
 def getLocalData():
@@ -97,7 +97,7 @@ def getLocalData():
         data["hum"].append(float(result[i][2]))
         data["pres"].append(float(result[i][3]))
         
-    data["now"] = [float(result[0][1]),float(result[0][2]),float(result[0][2])]
+    data["now"] = [float(result[0][1]),float(result[0][2]),float(result[0][3])]
         
     # #
     # 随机数据
