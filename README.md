@@ -3,9 +3,9 @@
 简介：这个是大三生产实习项目，内容是室内条件和室外天气可视化的Web服务。室内数据是用树莓派和传感器测得，室外数据是调用[天气API](https://www.tianqiapi.com/)获得。结构简单，功能较少，但前端做起来不太容易，属于入门级Web项目。
 
 此前没做过Web项目，初次尝试举步维艰。
-让我真正了解简单web项目的结构的是一个[疫情大数据web项目](https://blog.csdn.net/hxxjxw/article/details/105336981)及其[相关视频](https://www.bilibili.com/video/BV177411j7qJ)。
+项目开始，通过一个[疫情数据可视化web项目](https://blog.csdn.net/hxxjxw/article/details/105336981)及其[相关视频](https://www.bilibili.com/video/BV177411j7qJ)了解简单web项目的结构。
 
-开发过程中参考了echarts官方[文档](https://echarts.apache.org/examples/zh/index.html)、网上的博客（多是针对开发过程中遇到的问题、bug），感谢！
+开发过程中参考了echarts官方[文档](https://echarts.apache.org/examples/zh/index.html)、网上的博客（多是针对开发过程中遇到的问题、bug,感谢！）。
 
 边学习边开发真是件痛苦的事，最后做出来效果还可以，算是一次简单的项目经历。
 
