@@ -45,3 +45,5 @@ Python+mysql+flask+echarts
 python ./app.py
 ```
 若不想运行数据库或调用API的数据，把 app.py 里面的`LOCALDATA`设为`True`（默认值），即可从本地加载数据
+
+本机浏览器访问 `localhost:12345/`就可以看到上图中界面，局域网的其他主机可以访问本机的ip的12345端口获取页面。
